@@ -1,5 +1,5 @@
 /*
-* Project: Unbeatable Tic Tac Toe (Command Line)
+* Project: Tic Tac Toe (Command Line)
 * Author: Alli Rashid
 * v1.0
 */
@@ -29,17 +29,7 @@ while gameOver==false {
 
     endGameResult()
 
-    func isVacantForPlayer(spot: Int, input: String) ->Bool {
-        let spot = testEmptyArray.index(of: input)
-        if (testEmptyArray[spot!] != "x" && testEmptyArray[spot!] != "o") {
-            return true
-        } else {
-            return false
-        }
-    }
-
     func isVacantForComputer(spot: Int) ->Bool {
-        //let spot = testEmptyArray.index(of: input)
         if (testEmptyArray[spot] != "x" && testEmptyArray[spot] != "o") {
             return true
         } else {
@@ -48,27 +38,27 @@ while gameOver==false {
     }
 
     if (isVacantForComputer(spot: 0) != true && isVacantForComputer(spot: 1) != true
-    && isVacantForComputer(spot: 2) != true && isVacantForComputer(spot: 3) != true
-    && isVacantForComputer(spot: 4) != true && isVacantForComputer(spot: 5) != true
-    && isVacantForComputer(spot: 6) != true && isVacantForComputer(spot: 7) != true
-    && isVacantForComputer(spot: 8) != true) {
+        && isVacantForComputer(spot: 2) != true && isVacantForComputer(spot: 3) != true
+        && isVacantForComputer(spot: 4) != true && isVacantForComputer(spot: 5) != true
+        && isVacantForComputer(spot: 6) != true && isVacantForComputer(spot: 7) != true
+        && isVacantForComputer(spot: 8) != true) {
         gameOver = true
         print("\nTIE!")
         break;
     }
 
-    let checkStatus:Bool = true
+    var checkStatus:Bool = true
 
     while (checkStatus == true) {
         print("\nSelect position you wanna fill")
         let position = readLine()
         let indexOfPosition = testEmptyArray.index(of: position!)
-        if (isVacantForPlayer(spot: indexOfPosition!, input: position!)==true) {
-            testEmptyArray[indexOfPosition!] = "x"
-            break
-        } else {
-            print("position already filled! Select again.")
+        if (indexOfPosition == nil) {
+            print("Invalid input! Pick again.")
             endGameResult()
+        } else {
+            testEmptyArray[indexOfPosition!] = "x"
+            checkStatus = false
         }
     }
     
@@ -220,9 +210,9 @@ while gameOver==false {
         testEmptyArray[6] = "o"
     } 
 
-    //fork here
+    //Implement fork algorithm here
 
-    //block human's fork here
+    //Implement block-fork algorithm here
 
     //play center
     else if ((isVacantForComputer(spot: 0)==true) && (isVacantForComputer(spot: 1)==true) && 

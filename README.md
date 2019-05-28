@@ -1,2 +1,2 @@
 # Unbeatable-TicTacToe
-A game of tic tac toe against an unbeatable AI.
+A game of tic tac toe running on command line.

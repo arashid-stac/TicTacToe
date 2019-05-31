@@ -311,19 +311,24 @@ func computerPlays() {
 
 func playGame() {
     var checkStatus: Bool = true
-    print("\n Go first or second?\n1) First\n2) Second")
-    var iStart = readLine()
-    var iStartInt = Int(iStart!)
+    /*
+    *Ask user to input either 1 or 2 depending on if he wants
+    *to start first or second.
+    *Any other input will result in the user having to pick again.
+    */
+    var iStart: String = "Empty"
+    var iStartInt = Int(iStart)
     while (checkStatus == true) {
-        iStart = readLine()
-        iStartInt = Int(iStart!)
+        print("\nGo first or second?\n1) First\n2) Second\n")
+        print("Input '1' to go first and '2' to go second.\n")
+        iStart = readLine()!
+        iStartInt = Int(iStart)
         if (iStartInt == 1 && iStartInt != 2) {
             checkStatus = false
         } else if (iStartInt != 1 && iStartInt == 2) {
             checkStatus = false
         } else {
             print("Invalid input! Select again please.\n")
-            print("\n Go first or second?\n1) First\n2) Second")
         }
     }
 
@@ -375,13 +380,14 @@ func playGame() {
 
 func rematch() -> Bool {
     var checkStatus: Bool = true
-    print("Would you like a rematch?\n1) Yes\n2) No")
     /*
     *If user enters 1, then return true for the rematch
     *if user enters 2, then return false for the rematch
     *if user inputs invalid character, ask for input again
     */
     while (checkStatus == true) {
+        print("Would you like a rematch?\n1) Yes\n2) No\n")
+        print("Input '1' for yes and '2' for no.\n")
         let response = readLine()
         let responseInt = Int(response!)
         if (responseInt == 1 && responseInt != 2) {
@@ -392,7 +398,6 @@ func rematch() -> Bool {
             return false
         } else {
             print("Invalid input! Select again please.\n")
-            print("Would you like a rematch?\n1) Yes\n2) No")
         }
     }
 }
@@ -406,6 +411,9 @@ while (keepPlaying == true) {
     if (rematch() != true) {
         exit(0)
     } else {
+        /*
+        *Reset game
+        */
         gameOver = false
         testEmptyArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
     }
